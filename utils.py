@@ -1,6 +1,9 @@
-def read_day(n):
+def read_day(n, strip = True):
     with open(f"day-{n}.input") as f:
-        return [l.strip() for l in f.readlines()]
+        if strip:
+            return [l.strip() for l in f.readlines()]
+        else:
+            return f.readlines()
 
 def prod(xs):
     p = 1
