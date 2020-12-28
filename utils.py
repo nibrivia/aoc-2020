@@ -22,3 +22,8 @@ def diff(xs):
         diffs.append(x-p)
         p = x
     return diffs
+
+from math import gcd
+def lcm(x, y):
+    return x*y//gcd(x,y)
+
