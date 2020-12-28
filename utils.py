@@ -15,6 +15,28 @@ def prod(xs):
         p*=x
     return p
 
+def iter_nb(pos, skip_zero = True):
+    pos = list(pos)
+    d = [-1, 0, 1]
+    if len(pos) == 1:
+        x = pos[0]
+        xs = [[x+dx] for dx in d]
+        yield from xs
+        return
+
+    px = pos[-1]
+    for dx in d:
+        x = px+dx
+        for xs in iter_nb(pos[:-1], False):
+            xs.append(x)
+            if skip_zero and xs == pos:
+                continue
+            if skip_zero:
+                yield(tuple(xs))
+            else:
+                yield xs
+
+
 def diff(xs):
     p = xs[0]
     diffs = []
